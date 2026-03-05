@@ -1,0 +1,37 @@
+\ProvidesPackage{note-defines}
+
+% 명령어
+\newcommand\Z{\mathbb{Z}}
+\newcommand\Q{\mathbb{Q}}
+\newcommand\R{\mathbb{R}}
+\newcommand\C{\mathbb{C}}
+
+\newcommand\set[1]{\left\{ #1 \right\}}                 % \set{a, b, c}
+\newcommand\setof[2]{\left\{ #1 : #2 \right\}}          % \N = \setof{x}{x \in \Z, x \geq 0}
+\newcommand\floor[1]{\left\lfloor #1 \right\rfloor}     % \floor{x}
+\newcommand\ceil[1]{\left\lceil #1 \right\rceil}        % \ceil{x}
+\newcommand\abs[1]{\left\lvert #1 \right\rvert}         % \abs{x}
+
+\newcommand\nequiv{\not\equiv}                          % 3 \nequiv 4 \pmod{5}
+
+% 원 안에 숫자 \cnum{1} \cnum{2} \cnum{3}
+\newcommand{\cnum}[1]{\ensuremath{
+  \mathchoice
+    {\tikz[baseline={([yshift=-0.1ex]c.base)}] \node[circle, draw, inner sep=0pt, minimum size=1.1em, line width=0.5pt] (c) {\makebox[0pt][c]{\vphantom{$1$}$#1$}};}
+    {\tikz[baseline={([yshift=-0.1ex]c.base)}] \node[circle, draw, inner sep=0pt, minimum size=1.1em, line width=0.5pt] (c) {\makebox[0pt][c]{\vphantom{$1$}$#1$}};}
+    {\tikz[baseline={([yshift=-0.1ex]c.base)}] \node[circle, draw, inner sep=0pt, minimum size=0.7em, line width=0.3pt] (c) {\makebox[0pt][c]{\vphantom{$\scriptstyle 1$}$\scriptstyle #1$}};}
+    {\tikz[baseline={([yshift=-0.1ex]c.base)}] \node[circle, draw, inner sep=0pt, minimum size=0.5em, line width=0.2pt] (c) {\makebox[0pt][c]{\vphantom{$\scriptscriptstyle 1$}$\scriptscriptstyle #1$}};}%
+}}
+
+% Theorem
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[subsection]
+\newtheorem{example}{Example}[subsection]
+
+\theoremstyle{plain}
+\newtheorem{proposition}{Proposition}[subsection]
+\newtheorem{theorem}{Theorem}[subsection]
+\newtheorem{lemma}{Lemma}[subsection]
+
+% 함수 등 정의
+\DeclareMathOperator{\lcm}{lcm}
