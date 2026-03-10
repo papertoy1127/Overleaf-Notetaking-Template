@@ -1,5 +1,16 @@
 \ProvidesPackage{note-defines}
 
+\RequirePackage{kvoptions}
+
+\SetupKeyvalOptions{
+  family=NDEF,
+  prefix=NDEF@
+}
+
+\DeclareStringOption[section]{subsection}
+
+
+
 % 명령어
 \newcommand\Z{\mathbb{Z}}
 \newcommand\Q{\mathbb{Q}}
@@ -25,13 +36,13 @@
 
 % Theorem
 \theoremstyle{definition}
-\newtheorem{definition}{Definition}[subsection]
-\newtheorem{example}{Example}[subsection]
+\newtheorem{definition}{Definition}[\NDEF@section]
+\newtheorem{example}{Example}[\NDEF@section]
 
 \theoremstyle{plain}
-\newtheorem{proposition}{Proposition}[subsection]
-\newtheorem{theorem}{Theorem}[subsection]
-\newtheorem{lemma}{Lemma}[subsection]
+\newtheorem{proposition}{Proposition}[\NDEF@section]
+\newtheorem{theorem}{Theorem}[\NDEF@section]
+\newtheorem{lemma}{Lemma}[\NDEF@section]
 
 % 함수 등 정의
 \DeclareMathOperator{\lcm}{lcm}
