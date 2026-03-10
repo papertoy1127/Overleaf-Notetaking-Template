@@ -1,4 +1,5 @@
 \ProvidesPackage{note-defines}
+\RequirePackage{note-packages}
 
 \RequirePackage{kvoptions}
 
@@ -9,6 +10,7 @@
 
 \DeclareStringOption[subsection]{section}
 
+\ProcessKeyvalOptions*
 
 % 명령어
 \newcommand\Z{\mathbb{Z}}
