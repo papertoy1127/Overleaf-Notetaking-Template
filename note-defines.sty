@@ -37,22 +37,15 @@
 \newcommand{\oppop}[1]{\overset{\circ}{#1}}
 \newcommand{\iso}{\xrightarrow{\cong}}
 
-\newcommand{\func}[5]{%
-  \begingroup
-  \renewcommand{\arraystretch}{0.9}
-  \begin{array}{r@{\;}c@{\;}c@{\;}l}
-    #1: & #2 & \longrightarrow & #3 \\
-        & #4 & \longmapsto     & #5
-  \end{array}
-  \endgroup
+\NewDocumentCommand{\func}{ m >{\SplitArgument{1}{;}} m }{%
+  \funcaux{#1}#2%
 }
-
-\newcommand{\funcp}[5]{%
+\newcommand{\funcaux}[3]{%
   \begingroup
   \renewcommand{\arraystretch}{0.9}
-  \begin{array}{r@{\;}c@{\;}c@{\;}l}
-    #1: & #2 & \xlongrightarrow{\quad} & #3 \\
-        & #4 & \xlongmapsto{\quad}     & #5
+  \begin{array}{r@{\;}l}
+    #1: & #2 \\
+        & #3
   \end{array}
   \endgroup
 }
