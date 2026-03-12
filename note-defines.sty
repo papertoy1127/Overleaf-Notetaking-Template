@@ -1,3 +1,4 @@
+\NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{note-defines}
 \RequirePackage{note-packages}
 
@@ -12,42 +13,77 @@
 
 \ProcessKeyvalOptions*
 
-% 명령어
 \newcommand\Z{\mathbb{Z}}
 \newcommand\Q{\mathbb{Q}}
 \newcommand\R{\mathbb{R}}
 \newcommand\C{\mathbb{C}}
+\newcommand\N{\mathbb{N}}
+\newcommand\F{\mathbb{F}}
 
-\newcommand\set[1]{\left\{ #1 \right\}}                 % \set{a, b, c}
-\newcommand\setof[2]{\left\{ #1 : #2 \right\}}          % \N = \setof{x}{x \in \Z, x \geq 0}
-\newcommand\floor[1]{\left\lfloor #1 \right\rfloor}     % \floor{x}
-\newcommand\ceil[1]{\left\lceil #1 \right\rceil}        % \ceil{x}
-\newcommand\abs[1]{\left\lvert #1 \right\rvert}         % \abs{x}
+\newcommand{\ind}{\symbb{1}} 
+\newcommand{\powerset}{\mathcal{P}} 
+\newcommand{\cali}[1]{\mathcal{#1}} 
 
-\newcommand\nequiv{\not\equiv}                          % 3 \nequiv 4 \pmod{5}
+\DeclarePairedDelimiter\set{\{}{\}}
+\DeclarePairedDelimiterX\setof[2]{\{}{\}}{#1 \;\delimsize\vert\; #2}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\DeclarePairedDelimiter\gen{\langle}{\rangle}
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}
+\DeclarePairedDelimiterX\inner[2]{\langle}{\rangle}{#1, #2}
 
-% 원 안에 숫자 \cnum{1} \cnum{2} \cnum{3}
-\newcommand{\cnum}[1]{\ensuremath{
-  \mathchoice
-    {\tikz[baseline={([yshift=-0.1ex]c.base)}] \node[circle, draw, inner sep=0pt, minimum size=1.1em, line width=0.5pt] (c) {\makebox[0pt][c]{\vphantom{$1$}$#1$}};}
-    {\tikz[baseline={([yshift=-0.1ex]c.base)}] \node[circle, draw, inner sep=0pt, minimum size=1.1em, line width=0.5pt] (c) {\makebox[0pt][c]{\vphantom{$1$}$#1$}};}
-    {\tikz[baseline={([yshift=-0.1ex]c.base)}] \node[circle, draw, inner sep=0pt, minimum size=0.7em, line width=0.3pt] (c) {\makebox[0pt][c]{\vphantom{$\scriptstyle 1$}$\scriptstyle #1$}};}
-    {\tikz[baseline={([yshift=-0.1ex]c.base)}] \node[circle, draw, inner sep=0pt, minimum size=0.5em, line width=0.2pt] (c) {\makebox[0pt][c]{\vphantom{$\scriptscriptstyle 1$}$\scriptscriptstyle #1$}};}%
-}}
+\providecommand\nequiv{\not\equiv}
+\newcommand{\weakto}{\rightharpoonup}
+\newcommand{\oppop}[1]{\overset{\circ}{#1}}
+\newcommand{\iso}{\xrightarrow{\cong}}
 
-% Theorem
-\theoremstyle{definition}
-\newtheorem{definition}{Definition}[\NDEF@section]
-\newtheorem{example}{Example}[\NDEF@section]
+\newcommand{\func}[5]{
+  \begingroup
+  \renewcommand{\arraystretch}{0.8} % 행 간격 축소
+  \begin{array}{r@{\quad}c@{\;}c@{\;}l}
+    #1: & #2 & \longrightarrow & #3 \\
+        & #4 & \longmapsto     & #5
+  \end{array}
+  \endgroup
+}
 
-\theoremstyle{plain}
-\newtheorem{proposition}{Proposition}[\NDEF@section]
-\newtheorem{theorem}{Theorem}[\NDEF@section]
-\newtheorem{lemma}{Lemma}[\NDEF@section]
+\newcommand{\funcp}[5]{%
+  \begingroup
+  \renewcommand{\arraystretch}{0.8}
+  \begin{array}{r@{\quad}c@{\;}c@{\;}l}
+    #1: & #2 & \xlongrightarrow{\quad} & #3 \\
+        & #4 & \xlongmapsto{\quad}     & #5
+  \end{array}
+  \endgroup
+}
 
-% 함수 등 정의
+% [해석학 / 미적분학]
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator*{\esssup}{ess\,sup}
+\newcommand{\diff}{\mathop{}\!\mathrm{d}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\limn}{\lim_{n \to \infty}}
+\newcommand{\toinf}{\xrightarrow{n \to \infty}}
+
+% [선형대수학]
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\nullity}{nullity}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\Proj}{Proj}
+\DeclareMathOperator{\adj}{adj}
+\newcommand{\Span}{\operatorname{span}}
+\newcommand{\vb}[1]{\symbf{#1}} 
+\newcommand{\T}{\mathsf{T}}
+
+% [현대대수학]
 \DeclareMathOperator{\lcm}{lcm}
 \DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\SL}{SL}
 \DeclareMathOperator{\Aut}{Aut}
 \DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator{\End}{End}
@@ -60,9 +96,41 @@
 \DeclareMathOperator{\Inn}{Inn}
 \DeclareMathOperator{\Out}{Out}
 \DeclareMathOperator{\Syl}{Syl}
-
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\Frac}{Frac}
+\newcommand{\Char}{\operatorname{char}}
 \newcommand{\mfp}{\mathfrak{p}}
 \newcommand{\mfq}{\mathfrak{q}}
 \newcommand{\mfm}{\mathfrak{m}}
-\newcommand{\gen}[1]{\left\langle #1 \right\rangle}
-\newcommand{\iso}{\xrightarrow{\cong}}
+
+% [위상수학]
+\DeclareMathOperator{\Int}{Int}
+\DeclareMathOperator{\Cl}{Cl}
+\DeclareMathOperator{\Bd}{Bd}
+\newcommand{\basis}{\mathcal{B}}
+\newcommand{\sbasis}{\mathcal{S}ub}
+\newcommand{\topo}{\mathcal{T}}
+
+% ---------------------------------------------------------
+% 5. 기타 환경 및 숫자 기호
+% ---------------------------------------------------------
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[\NDEF@section]
+\newtheorem{example}{Example}[\NDEF@section]
+\theoremstyle{plain}
+\newtheorem{proposition}{Proposition}[\NDEF@section]
+\newtheorem{theorem}{Theorem}[\NDEF@section]
+\newtheorem{lemma}{Lemma}[\NDEF@section]
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+\newcommand{\cnum}[1]{\ensuremath{
+  \mathchoice
+    {\tikz[baseline={([yshift=-0.1ex]c.base)}] \node[circle, draw, inner sep=0pt, minimum size=1.1em, line width=0.5pt] (c) {\makebox[0pt][c]{\vphantom{$1$}$#1$}};}
+    {\tikz[baseline={([yshift=-0.1ex]c.base)}] \node[circle, draw, inner sep=0pt, minimum size=1.1em, line width=0.5pt] (c) {\makebox[0pt][c]{\vphantom{$1$}$#1$}};}
+    {\tikz[baseline={([yshift=-0.1ex]c.base)}] \node[circle, draw, inner sep=0pt, minimum size=0.7em, line width=0.3pt] (c) {\makebox[0pt][c]{\vphantom{$\scriptstyle 1$}$\scriptstyle #1$}};}
+    {\tikz[baseline={([yshift=-0.1ex]c.base)}] \node[circle, draw, inner sep=0pt, minimum size=0.5em, line width=0.2pt] (c) {\makebox[0pt][c]{\vphantom{$\scriptscriptstyle 1$}$\scriptscriptstyle #1$}};}%
+}}
+
+\endinput
