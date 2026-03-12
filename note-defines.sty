@@ -12,9 +12,6 @@
 \DeclareStringOption[subsection]{section}
 \ProcessKeyvalOptions*
 
-% ---------------------------------------------------------
-% 1. 수 체계 및 기본 기호
-% ---------------------------------------------------------
 \newcommand\Z{\mathbb{Z}}
 \newcommand\Q{\mathbb{Q}}
 \newcommand\R{\mathbb{R}}
@@ -26,9 +23,6 @@
 \newcommand{\powerset}{\mathcal{P}} 
 \newcommand{\cali}[1]{\mathcal{#1}} 
 
-% ---------------------------------------------------------
-% 2. 괄호 및 집합
-% ---------------------------------------------------------
 \DeclarePairedDelimiter\set{\{}{\}}
 \DeclarePairedDelimiterX\setof[2]{\{}{\}}{#1 \,\delimsize\vert\, #2}
 \DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
@@ -38,17 +32,11 @@
 \DeclarePairedDelimiter\norm{\lVert}{\rVert}
 \DeclarePairedDelimiterX\inner[2]{\langle}{\rangle}{#1, #2}
 
-% 충돌 방지용 nequiv 재정의
-\let\nequiv\undefined
-\newcommand{\nequiv}{\not\equiv}
 
 \newcommand{\weakto}{\rightharpoonup}
 \newcommand{\oppop}[1]{\overset{\circ}{#1}}
 \newcommand{\iso}{\xrightarrow{\cong}}
 
-% ---------------------------------------------------------
-% 3. 함수 대응 매크로 (array 간격 최적화)
-% ---------------------------------------------------------
 \newcommand{\func}[5]{%
   \begingroup
   \renewcommand{\arraystretch}{0.9}
@@ -69,9 +57,6 @@
   \endgroup
 }
 
-% ---------------------------------------------------------
-% 4. 수학 연산자 보강
-% ---------------------------------------------------------
 \DeclareMathOperator{\supp}{supp}
 \DeclareMathOperator{\diam}{diam}
 \DeclareMathOperator{\sgn}{sgn}
@@ -118,9 +103,6 @@
 \DeclareMathOperator{\Cl}{Cl}
 \DeclareMathOperator{\Bd}{Bd}
 
-% ---------------------------------------------------------
-% 5. 정리 및 원 숫자
-% ---------------------------------------------------------
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[\NDEF@section]
 \newtheorem{example}{Example}[\NDEF@section]
